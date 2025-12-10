@@ -61,6 +61,18 @@ wheels = [
 ]
 
 [[package]]
+name = "django-unfold"
+version = "0.73.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/03/80/fb57c7016a784f86ab5e73a7e843941daad9feea1d44b31a8f40f24d190e/django_unfold-0.73.1.tar.gz", hash = "sha256:2c1bbf24d2fc162fe5d0e19b27c1f8287fdd5343b1ffe2b78ee26586ed1a4837", size = 1103069, upload-time = "2025-12-09T09:11:29.087Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/79/89/4d5716871f9c7aea6c2a567ac297380efa870c4641641a87b45a7b8587c0/django_unfold-0.73.1-py3-none-any.whl", hash = "sha256:7241275b75f0784a28410afa6bb4660f427eb7b62d48726195b35374887f017d", size = 1216980, upload-time = "2025-12-09T09:11:27.761Z" },
+]
+
+[[package]]
 name = "djlint"
 version = "1.36.4"
 source = { registry = "https://pypi.org/simple" }
@@ -117,6 +129,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "django" },
+    { name = "django-unfold" },
     { name = "djlint" },
     { name = "pillow" },
 ]
@@ -124,6 +137,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=6.0" },
+    { name = "django-unfold", specifier = ">=0.73.1" },
     { name = "djlint", specifier = ">=1.36.4" },
     { name = "pillow", specifier = ">=12.0.0" },
 ]
