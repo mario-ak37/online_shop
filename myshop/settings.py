@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # 3rd-party apps
     # local apps
     "shop",
+    "cart",
+    "orders",
 ]
 
 MIDDLEWARE = [
@@ -66,6 +68,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # custom context processor, make the cart available globally
+                "cart.context_processors.cart",
             ],
         },
     },
