@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from unfold.admin import ModelAdmin, StackedInline, TabularInline
 
 from .models import Order, OrderItem
@@ -8,6 +9,18 @@ from .models import Order, OrderItem
 class OrderItemInline(TabularInline):
     model = OrderItem
     raw_id_fields = ["product"]
+    extra = 0
+
+
+def order_payment(obj):
+    url = obj.get_stripe_url()
+    if obj.stripe_id:
+        html = f'<a href="{url}" target="_blank">{obj.stripe_id}</a>'
+        return mark_safe(html)
+    return ""
+
+
+order_payment.short_description = "Stripe Payment"
 
 
 @admin.register(Order)
@@ -21,6 +34,7 @@ class OrderAdmin(ModelAdmin):
         "postal_code",
         "city",
         "paid",
+        order_payment,
         "created",
         "updated",
     ]
