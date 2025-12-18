@@ -4,6 +4,7 @@ import datetime
 from django.contrib import admin
 from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from unfold.admin import ModelAdmin, TabularInline
 from unfold.decorators import action
@@ -29,6 +30,19 @@ def order_payment(obj):
 order_payment.short_description = "Stripe Payment"
 
 
+def order_detail(obj):
+    url = reverse("orders:admin_order_detail", kwargs={"order_id": obj.id})
+    return mark_safe(f'<a href="{url}">View</a>')
+
+
+def order_pdf(obj):
+    url = reverse("orders:admin_order_pdf", kwargs={"order_id": obj.id})
+    return mark_safe(f'<a href="{url}">PDF</a>')
+
+
+order_pdf.short_description = "Invoice"
+
+
 @admin.register(Order)
 class OrderAdmin(ModelAdmin):
     list_display = [
@@ -43,6 +57,8 @@ class OrderAdmin(ModelAdmin):
         order_payment,
         "created",
         "updated",
+        order_detail,
+        order_pdf,
     ]
 
     list_filter = ["paid", "created", "updated"]

@@ -17,6 +17,7 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,11 +43,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rd-party apps
-    "payment",
+    "crispy_forms",
+    "crispy_bootstrap4",
     # local apps
     "shop",
     "cart",
     "orders",
+    "payment",
 ]
 
 MIDDLEWARE = [
@@ -150,3 +153,7 @@ DEFAULT_FROM_EMAIL = config("EMAIL_HOST_USER")
 STRIPE_PUBLISHABLE_KEY = config("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY")
 STRIPE_WEBHOOK_SECRET = config("STRIPE_WEBHOOK_SECRET")
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
