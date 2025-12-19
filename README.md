@@ -16,8 +16,6 @@ A Django-based online shop that supports browsing products, managing a shopping 
 
 ## Technologies Used
 
-## Technologies Used
-
 - Python
 - Django
 - Django Sessions
@@ -38,40 +36,42 @@ git clone https://github.com/mario-ak37/online_shop.git
 cd online_shop
 ```
 
-````
+`````
 
-### Create a virtual environment and install dependencies
+Here’s a cleaned-up and more consistent version of that section:
+
+````md
+## Setup Virtual Environment and Dependencies
 
 ```bash
-python -m venv .venv
+uv venv
 source .venv/bin/activate
-pip install -r requirements.txt
-```
+uv sync
+`````
 
-### Run required services
+## Start Required Services
 
-#### RabbitMQ (via Docker)
+### RabbitMQ (via Docker)
 
 ```bash
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
 ```
 
-#### Celery worker
+### Start Celery Worker
 
 ```bash
 celery -A myshop worker -l INFO
 ```
 
-#### Stripe webhook listener
+### Start Stripe Webhook Listener
 
 ```bash
 stripe listen --forward-to localhost:8000/payment/webhook/
 ```
 
-### Run migrations and start the server
+## Run Migrations and Start Django Server
 
 ```bash
 python manage.py migrate
 python manage.py runserver
 ```
-````
