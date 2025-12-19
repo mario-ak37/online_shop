@@ -36,18 +36,13 @@ git clone https://github.com/mario-ak37/online_shop.git
 cd online_shop
 ```
 
-`````
-
-Here’s a cleaned-up and more consistent version of that section:
-
-````md
 ## Setup Virtual Environment and Dependencies
 
 ```bash
 uv venv
 source .venv/bin/activate
 uv sync
-`````
+```
 
 ## Start Required Services
 
