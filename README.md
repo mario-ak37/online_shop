@@ -53,11 +53,7 @@ The following services must be running before starting the Django server.
 #### RabbitMQ (via Docker)
 
 ```bash
-docker run -it --rm \
-  --name rabbitmq \
-  -p 5672:5672 \
-  -p 15672:15672 \
-  rabbitmq:management
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
 ```
 
 RabbitMQ management interface is available at `http://localhost:15672`
